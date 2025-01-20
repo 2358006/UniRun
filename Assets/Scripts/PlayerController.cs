@@ -42,12 +42,14 @@ public class PlayerController : MonoBehaviour
   void Die()
   {
     animator.SetTrigger("Die");
+
     playerAudio.clip = deathClip;
     playerAudio.Play();
 
-
     playerRigidBody.linearVelocity = Vector2.zero;
     isDead = true;
+
+    GameManager.instance.OnPlayerDead();
   }
 
   void OnTriggerEnter2D(Collider2D other)
